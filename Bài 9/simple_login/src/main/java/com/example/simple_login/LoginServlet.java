@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "LoginServlet", value = "/login")
-public class HelloServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     private String message;
 
     public void init() {
