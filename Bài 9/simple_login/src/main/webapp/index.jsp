@@ -1,3 +1,4 @@
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -24,6 +25,7 @@
         <input type="text" name="username" size="27" placeholder="username">
         <input type="password" name="password" size="27" placeholder="password">
         <input type="submit" value="Sign in">
+
     </div>
 </form>
 

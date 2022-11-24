@@ -1,6 +1,8 @@
 package com.example.simple_login;
 
 import java.io.*;
+import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -27,6 +29,17 @@ public class LoginServlet extends HttpServlet {
         }
 
         writer.println("</html>");
+
+//        String defaultUser = getServletConfig().getInitParameter("username");
+//        String defaultPass = getServletConfig().getInitParameter("password");
+//
+//        if ("admin".equals(username) && "admin".equals(password)) {
+//            request.setAttribute("loginTime", new Date());
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+//            requestDispatcher.forward(request, response);
+//        } else {
+//            response.sendRedirect("index.jsp");
+//        }
     }
 
     public void destroy() {
