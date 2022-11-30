@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static jdk.nashorn.internal.objects.NativeArray.sort;
+
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -37,6 +39,9 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "edit":
                     updateUser(request, response);
+                    break;
+                case "search":
+                    searchUser(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -61,6 +66,9 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "delete":
                     deleteUser(request, response);
+                    break;
+                case "sort":
+                    sort(request, response);
                     break;
                 default:
                     listUser(request, response);
@@ -128,5 +136,19 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void sort(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<User> listUser = userDAO.sort();
+        request.setAttribute("listUser",listUser);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/list.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String country = request.getParameter("search");
+        request.setAttribute("listUser",userDAO.searchByCountry(country));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/list.jsp");
+        requestDispatcher.forward(request,response);
     }
 }

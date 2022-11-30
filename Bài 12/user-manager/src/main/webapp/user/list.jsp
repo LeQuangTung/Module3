@@ -13,6 +13,13 @@
     </h2>
 </center>
 <div align="center">
+    <form action="users?action=search" method="post">
+        <input type="text" name="search" placeholder="Enter country search">
+        <button >Search</button>
+    </form>
+    <button><a href="users?action=sort">Sort</a></button>
+</div>
+<div align="center">
     <table border="1" cellpadding="5">
         <caption><h2>List of Users</h2></caption>
         <tr>
